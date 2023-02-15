@@ -8,6 +8,16 @@ offset := 100
 Suspend
 return
 
+; suspend
+^!Up::
+^!i::
+Suspend
+return
+
+; ------------- ;
+; adjust offset ;
+; ------------- ;
+
 ; small offset
 f::
 offset := 10
@@ -18,55 +28,96 @@ d::
 offset := 100
 return
 
-; move - up
+
+; ----- ;
+; moves ;
+; ----- ;
+
 Up::
-MouseGetPos, X, Y
-Y -= offset
-DllCall("SetCursorPos", "int", X, "int", Y)
+i::
+Move("Up", offset)
 return
 
-; move - down
 Down::
-MouseGetPos, X, Y
-Y += offset
-DllCall("SetCursorPos", "int", X, "int", Y)
+k::
+Move("Down", offset)
 return
 
-; move- left
 Left::
-MouseGetPos, X, Y
-X -= offset
-DllCall("SetCursorPos", "int", X, "int", Y)
+j::
+Move("Left", offset)
 return
 
-; move- right
 Right::
-MouseGetPos, X, Y
-X += offset
-DllCall("SetCursorPos", "int", X, "int", Y)
+l::
+Move("Right", offset)
 return
 
-; scroll - up
+
+; ------- ;
+; scrolls ;
+; ------- ;
+
 s & Up::
+s & i::
 Click, WheelUp
 return
 
-; scroll - down
 s & Down::
+s & k::
 Click, WheelDown
 return
 
-; click - left
-Space::
-Click
+s & Left::
+s & j::
+Click, WheelLeft
 return
 
-; click - right
+s & Right::
+s & l::
+Click, WheelRight
+return
+
+
+; ------ ;
+; clicks ;
+; ------ ;
+
+Space::
+Click, Left
+return
+
 Shift::
 Click, Right
 return
 
-; suspend
-^!Up::
-Suspend
+
+; ------------- ;
+; navigate tabs ;
+; ------------- ;
+
+^u::
+Send ^{PgUp}
 return
+
+^o::
+Send ^{PgDn}
+return
+
+
+; --------- ;
+; functions ;
+; --------- ;
+
+Move(direction, offset)
+{
+    MouseGetPos, X, Y
+    Switch direction
+    {
+        case "Up":    Y -= offset
+        case "Down":  Y += offset
+        case "Left":  X -= offset
+        case "Right": X += offset
+    }
+    DllCall("SetCursorPos", "int", X, "int", Y)
+}
