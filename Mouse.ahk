@@ -34,22 +34,22 @@ return
 ; ----- ;
 
 Up::
-i::
+a & i::
 Move("Up", offset)
 return
 
 Down::
-k::
+a & k::
 Move("Down", offset)
 return
 
 Left::
-j::
+a & j::
 Move("Left", offset)
 return
 
 Right::
-l::
+a & l::
 Move("Right", offset)
 return
 
@@ -109,19 +109,19 @@ return
 ; arrow keys ;
 ; ---------- ;
 
-a & i::
+i::
 Send {Up}
 return
 
-a & k::
+k::
 Send {Down}
 return
 
-a & j::
+j::
 Send {Left}
 return
 
-a & l::
+l::
 Send {Right}
 return
 
