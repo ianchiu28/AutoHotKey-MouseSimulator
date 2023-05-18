@@ -105,6 +105,27 @@ Send ^{PgDn}
 return
 
 
+; ---------- ;
+; arrow keys ;
+; ---------- ;
+
+a & i::
+Send {Up}
+return
+
+a & k::
+Send {Down}
+return
+
+a & j::
+Send {Left}
+return
+
+a & l::
+Send {Right}
+return
+
+
 ; --------- ;
 ; functions ;
 ; --------- ;
