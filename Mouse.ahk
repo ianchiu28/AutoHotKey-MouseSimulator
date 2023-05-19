@@ -109,21 +109,13 @@ return
 ; arrow keys ;
 ; ---------- ;
 
-i::
-Send {Up}
-return
+i::Up
 
-k::
-Send {Down}
-return
+k::Down
 
-j::
-Send {Left}
-return
+j::Left
 
-l::
-Send {Right}
-return
+l::Right
 
 
 ; --------- ;
